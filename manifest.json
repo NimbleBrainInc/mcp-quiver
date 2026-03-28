@@ -1,0 +1,55 @@
+{
+  "manifest_version": "0.4",
+  "name": "@nimblebraininc/mcp-quiver",
+  "version": "0.1.0",
+  "description": "Political and alternative financial data from Quiver Quantitative",
+  "author": {
+    "name": "NimbleBrain Inc",
+    "email": "hello@nimblebrain.ai"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NimbleBrainInc/mcp-quiver"
+  },
+  "user_config": {
+    "api_key": {
+      "type": "string",
+      "title": "Quiver API Key",
+      "description": "Your Quiver Quantitative API key from https://www.quiverquant.com",
+      "sensitive": true,
+      "required": true
+    }
+  },
+  "server": {
+    "type": "python",
+    "entry_point": "mcp_quiver.server",
+    "mcp_config": {
+      "command": "python",
+      "args": ["-m", "mcp_quiver.server"],
+      "env": {
+        "QUIVER_API_KEY": "${user_config.api_key}"
+      }
+    }
+  },
+  "tools": [
+    { "name": "get_congress_trades", "description": "Get congressional stock trades for a ticker symbol" },
+    { "name": "get_congress_trades_bulk", "description": "Get all recent congressional trades across all tickers" },
+    { "name": "get_politician_profile", "description": "Get detailed politician profile including trading history, committees, and donors" },
+    { "name": "get_lobbying", "description": "Get lobbying spend records for a ticker symbol" },
+    { "name": "get_lobbying_bulk", "description": "Get all lobbying data across all tickers" },
+    { "name": "get_gov_contracts", "description": "Get government contract awards for a ticker symbol" },
+    { "name": "get_gov_contracts_bulk", "description": "Get all government contract data across all tickers" }
+  ],
+  "_meta": {
+    "org.mpaktrust": {
+      "mtf_version": "0.1",
+      "permissions": {
+        "filesystem": "none",
+        "network": "outbound",
+        "environment": "read",
+        "subprocess": "none",
+        "native": "none"
+      }
+    }
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "$schema": "https://cdn.mpak.dev/schemas/2025-10-19/mpak.json",
+  "name": "@nimblebraininc/mcp-quiver",
+  "maintainers": ["mgoldsborough"]
+}
