@@ -1,7 +1,7 @@
 {
   "manifest_version": "0.4",
   "name": "@nimblebraininc/mcp-quiver",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Political and alternative financial data from Quiver Quantitative",
   "author": {
     "name": "NimbleBrain Inc",
@@ -25,20 +25,44 @@
     "entry_point": "mcp_quiver.server",
     "mcp_config": {
       "command": "python",
-      "args": ["-m", "mcp_quiver.server"],
+      "args": [
+        "-m",
+        "mcp_quiver.server"
+      ],
       "env": {
         "QUIVER_API_KEY": "${user_config.api_key}"
       }
     }
   },
   "tools": [
-    { "name": "get_congress_trades", "description": "Get congressional stock trades for a ticker symbol" },
-    { "name": "get_congress_trades_bulk", "description": "Get all recent congressional trades across all tickers" },
-    { "name": "get_politician_profile", "description": "Get detailed politician profile including trading history, committees, and donors" },
-    { "name": "get_lobbying", "description": "Get lobbying spend records for a ticker symbol" },
-    { "name": "get_lobbying_bulk", "description": "Get all lobbying data across all tickers" },
-    { "name": "get_gov_contracts", "description": "Get government contract awards for a ticker symbol" },
-    { "name": "get_gov_contracts_bulk", "description": "Get all government contract data across all tickers" }
+    {
+      "name": "get_congress_trades",
+      "description": "Get congressional stock trades for a ticker symbol"
+    },
+    {
+      "name": "get_congress_trades_bulk",
+      "description": "Get all recent congressional trades across all tickers"
+    },
+    {
+      "name": "get_politician_profile",
+      "description": "Get detailed politician profile including trading history, committees, and donors"
+    },
+    {
+      "name": "get_lobbying",
+      "description": "Get lobbying spend records for a ticker symbol"
+    },
+    {
+      "name": "get_lobbying_bulk",
+      "description": "Get all lobbying data across all tickers"
+    },
+    {
+      "name": "get_gov_contracts",
+      "description": "Get government contract awards for a ticker symbol"
+    },
+    {
+      "name": "get_gov_contracts_bulk",
+      "description": "Get all government contract data across all tickers"
+    }
   ],
   "_meta": {
     "org.mpaktrust": {
