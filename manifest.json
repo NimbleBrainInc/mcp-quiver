@@ -2,7 +2,7 @@
   "manifest_version": "0.4",
   "name": "@nimblebraininc/mcp-quiver",
   "display_name": "Quiver",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Political and alternative financial data from Quiver Quantitative",
   "author": {
     "name": "NimbleBrain Inc",
