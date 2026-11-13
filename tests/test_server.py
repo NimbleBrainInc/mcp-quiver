@@ -2,6 +2,7 @@
 
 import json
 import os
+from datetime import UTC, datetime, timedelta
 from unittest.mock import patch
 
 import pytest
@@ -21,8 +22,10 @@ class TestSkillResource:
     @pytest.mark.asyncio
     async def test_initialize_returns_instructions(self, client):
         async with client:
-            init = await client.initialize()
-            assert "skill://quiver/usage" in init.instructions
+            # client.instructions reads whichever negotiation result the protocol era
+            # produced; client.initialize() raises on the modern (server/discover) era.
+            assert client.instructions is not None
+            assert "skill://quiver/usage" in client.instructions
 
     @pytest.mark.asyncio
     async def test_skill_resource_listed(self, client):
@@ -231,7 +234,8 @@ class TestWithMockedAPI:
             },
             {
                 "Representative": "Recent Trade",
-                "TransactionDate": "2026-03-15",
+                # Relative to today, so the trade stays inside the 90-day window.
+                "TransactionDate": (datetime.now(UTC) - timedelta(days=5)).strftime("%Y-%m-%d"),
                 "Ticker": "AAPL",
             },
         ]

@@ -1,6 +1,6 @@
 [project]
 name = "mcp-quiver"
-version = "0.1.1"
+version = "0.2.0"
 description = "Political and alternative financial data from Quiver Quantitative"
 readme = "README.md"
 license = {text = "MIT"}
@@ -18,7 +18,7 @@ classifiers = [
     "Topic :: Office/Business :: Financial",
 ]
 dependencies = [
-    "fastmcp>=2.14.1",
+    "fastmcp>=4.0.0",
     "httpx>=0.28.0",
 ]
 
@@ -52,6 +52,10 @@ testpaths = ["tests"]
 python_files = ["test_*.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]
+filterwarnings = [
+    # A deprecated MCP capability (logging, sampling, roots under SEP-2577) fails the suite.
+    "error::mcp.MCPDeprecationWarning",
+]
 addopts = [
     "--strict-markers",
     "--strict-config",
